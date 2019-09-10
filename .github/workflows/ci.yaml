@@ -14,8 +14,8 @@ jobs:
       - run: echo $PR
         env:
           PR: ${{ steps.findPr.outputs.pr }}
-      - if: ${{ steps.findPr.outputs.pr }}
-        run: echo "This is a PR!"
+      # - if: ${{ steps.findPr.outputs.pr }}
+      #   run: echo "This is a PR!"
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
