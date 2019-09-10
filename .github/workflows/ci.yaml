@@ -15,3 +15,7 @@ jobs:
       - name: Hello
         run:
           echo "Hello World"
+      - name: OnFail
+        if: failure()
+        run:
+          echo "I could collect logs."
