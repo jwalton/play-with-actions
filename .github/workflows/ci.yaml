@@ -1,4 +1,4 @@
-name: Node CI
+name: CI
 on: [push]
 
 jobs:
@@ -6,11 +6,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: '10'
       - name: test
-        run: |
-          npm install
-          npm test
+        run: echo Hello World
