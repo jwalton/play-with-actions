@@ -1,10 +1,17 @@
-name: CI
-on: [push]
+name: Node CI
+on: [push, pull_request]
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: test
-        run: echo Hello World
+      - name: Merge PR
+        if: success() && github.event_name == 'pull_request'
+        run: git merge ${BASE_REF}
+        env:
+          BASE_REF: ${{ github.base_ref }}
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10'
