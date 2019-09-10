@@ -6,7 +6,11 @@ async function main() {
     const sha = core.getInput('sha') || context.sha;
 
     const client = new GitHub(token, {});
-    const result = await client.repos.listPullRequestsAssociatedWithCommit({commit_sha: sha});
+    const result = await client.repos.listPullRequestsAssociatedWithCommit({
+        owner: context.repo.owner,
+        repo: context.repo.repo,
+        commit_sha: sha
+    });
 
     core.setOutput("pr", `${result.data.length > 0 ? result.data[0].number : ''}`);
 }
