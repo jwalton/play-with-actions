@@ -9,6 +9,8 @@ jobs:
       - name: Merge PR
         if: success() && github.event_name == 'pull_request'
         run: git merge origin/${{ github.base_ref }}
+      - run: git rev-parse HEAD
+      - run: git rev-parse origin/master
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
