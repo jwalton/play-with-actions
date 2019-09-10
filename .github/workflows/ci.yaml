@@ -11,7 +11,9 @@ jobs:
         uses: ./.github/actions/findPr
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo ${{ steps.findPr.outputs.pr }}
+      - run: echo $PR
+        env:
+          PR: ${{ steps.findPr.outputs.pr }}
       - if: ${{ steps.findPr.outputs.pr }}
         run: echo "This is a PR!"
       - name: Use Node.js
