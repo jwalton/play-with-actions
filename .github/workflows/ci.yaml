@@ -1,0 +1,17 @@
+name: Node CI
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Error
+        run:
+          ls foo
+      - name: Hello
+        run:
+          echo "Hello World"
