@@ -11,11 +11,7 @@ jobs:
         run: git merge ${BASE_REF}
         env:
           BASE_REF: ${{ github.base_ref }}
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         uses: actions/setup-node@v1
         with:
           node-version: '10'
-      - name: test
-        run: |
-          npm install
-          npm test
